@@ -1,0 +1,69 @@
+
+{
+  "content": [
+    {
+      "type": "Header",
+      "props": {
+        "id": "header-main-1",
+        "logo": "SkyWings",
+        "phone": "+7 (800) 555-35-35",
+        "ctaText": "Связаться"
+      }
+    },
+    {
+      "type": "Hero",
+      "props": {
+        "id": "hero-main-1",
+        "title": "Ваше небо — ваши правила",
+        "subtitle": "Премиальные легкие самолеты для частных владельцев и авиационных энтузиастов. Полный сервис: от выбора до обслуживания.",
+        "buttonText": "Смотреть каталог",
+        "secondaryButtonText": "Видео о нас",
+        "backgroundImage": "https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      }
+    },
+    {
+      "type": "AircraftCatalog",
+      "props": {
+        "id": "catalog-main-1",
+        "title": "Каталог самолетов",
+        "subtitle": "Выберите идеальный самолет из нашей коллекции премиальных летательных аппаратов"
+      }
+    },
+    {
+      "type": "Features",
+      "props": {
+        "id": "features-main-1",
+        "title": "Почему выбирают нас",
+        "subtitle": "Мы предоставляем полный комплекс услуг для владельцев частных самолетов"
+      }
+    },
+    {
+      "type": "About",
+      "props": {
+        "id": "about-main-1",
+        "title": "О компании SkyWings",
+        "subtitle": "Ваш надежный партнер в мире авиации",
+        "description": "SkyWings — ведущий дилер легких самолетов в России и СНГ. Мы предлагаем полный спектр услуг: от консультаций по выбору самолета до технического обслуживания и обучения пилотов. Наша команда экспертов имеет более 15 лет опыта в авиационной индустрии.",
+        "image": "https://images.pexels.com/photos/1554732/pexels-photo-1554732.jpeg?auto=compress&cs=tinysrgb&w=800"
+      }
+    },
+    {
+      "type": "Contact",
+      "props": {
+        "id": "contact-main-1",
+        "title": "Свяжитесь с нами",
+        "subtitle": "Оставьте заявку и наш специалист свяжется с вами в ближайшее время"
+      }
+    },
+    {
+      "type": "Footer",
+      "props": {
+        "id": "footer-main-1",
+        "companyName": "SkyWings",
+        "tagline": "Ваше небо — ваши правила"
+      }
+    }
+  ],
+  "root": {},
+  "zones": {}
+}
