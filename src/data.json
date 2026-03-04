@@ -5,28 +5,30 @@
       "type": "Header",
       "props": {
         "id": "header-main-1",
-        "logo": "SkyWings",
-        "phone": "+7 (800) 555-35-35",
-        "ctaText": "Связаться"
+        "logo": "ОвощнойРай",
+        "navItems": "Главная,Каталог,О нас,Контакты",
+        "ctaText": "Корзина",
+        "bgColor": "bg-white"
       }
     },
     {
       "type": "Hero",
       "props": {
         "id": "hero-main-1",
-        "title": "Ваше небо — ваши правила",
-        "subtitle": "Премиальные легкие самолеты для частных владельцев и авиационных энтузиастов. Полный сервис: от выбора до обслуживания.",
-        "buttonText": "Смотреть каталог",
-        "secondaryButtonText": "Видео о нас",
-        "backgroundImage": "https://images.pexels.com/photos/1554646/pexels-photo-1554646.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        "title": "Свежие овощи прямо с грядки",
+        "subtitle": "Доставляем экологически чистые овощи от местных фермеров. 100% натурально, без химии и пестицидов. Бесплатная доставка от 2000₽",
+        "buttonText": "Заказать сейчас",
+        "buttonColor": "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700",
+        "backgroundImage": "https://images.pexels.com/photos/1300979/pexels-photo-1300979.jpeg?auto=compress&cs=tinysrgb&w=1920"
       }
     },
     {
-      "type": "AircraftCatalog",
+      "type": "Products",
       "props": {
-        "id": "catalog-main-1",
-        "title": "Каталог самолетов",
-        "subtitle": "Выберите идеальный самолет из нашей коллекции премиальных летательных аппаратов"
+        "id": "products-main-1",
+        "title": "Популярные товары",
+        "subtitle": "Самые свежие овощи от проверенных фермеров. Мы тщательно отбираем каждый продукт.",
+        "columns": "4"
       }
     },
     {
@@ -34,17 +36,17 @@
       "props": {
         "id": "features-main-1",
         "title": "Почему выбирают нас",
-        "subtitle": "Мы предоставляем полный комплекс услуг для владельцев частных самолетов"
+        "subtitle": "Мы делаем всё, чтобы вы получали самые свежие и полезные овощи",
+        "columns": "3"
       }
     },
     {
       "type": "About",
       "props": {
         "id": "about-main-1",
-        "title": "О компании SkyWings",
-        "subtitle": "Ваш надежный партнер в мире авиации",
-        "description": "SkyWings — ведущий дилер легких самолетов в России и СНГ. Мы предлагаем полный спектр услуг: от консультаций по выбору самолета до технического обслуживания и обучения пилотов. Наша команда экспертов имеет более 15 лет опыта в авиационной индустрии.",
-        "image": "https://images.pexels.com/photos/1554732/pexels-photo-1554732.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "title": "О нашем магазине",
+        "description": "ОвощнойРай — это семейный бизнес, который начался в 2015 году с маленькой лавки на рынке. Сегодня мы сотрудничаем с 50+ фермерскими хозяйствами и доставляем свежие овощи тысячам клиентов ежедневно. Наша миссия — сделать качественные продукты доступными для каждой семьи.",
+        "backgroundImage": "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     },
     {
@@ -52,15 +54,21 @@
       "props": {
         "id": "contact-main-1",
         "title": "Свяжитесь с нами",
-        "subtitle": "Оставьте заявку и наш специалист свяжется с вами в ближайшее время"
+        "subtitle": "Есть вопросы? Мы всегда рады помочь вам с выбором и ответить на любые вопросы",
+        "address": "г. Москва, ул. Садовая, д. 15",
+        "phone": "+7 (495) 123-45-67",
+        "email": "info@ovoshnoyrai.ru"
       }
     },
     {
       "type": "Footer",
       "props": {
         "id": "footer-main-1",
-        "companyName": "SkyWings",
-        "tagline": "Ваше небо — ваши правила"
+        "companyName": "ОвощнойРай",
+        "tagline": "Свежие овощи с доставкой на дом",
+        "address": "г. Москва, ул. Садовая, д. 15",
+        "phone": "+7 (495) 123-45-67",
+        "email": "info@ovoshnoyrai.ru"
       }
     }
   ],

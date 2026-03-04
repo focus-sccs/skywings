@@ -1,104 +1,110 @@
 
 import React from 'react';
-import { ArrowRight, Play, ChevronDown } from 'lucide-react';
+import { ArrowRight, Truck, Shield, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
   title?: string;
   subtitle?: string;
   buttonText?: string;
-  secondaryButtonText?: string;
+  buttonColor?: string;
   backgroundImage?: string;
 }
 
 export function Hero({
-  title = 'Ваше небо — ваши правила',
-  subtitle = 'Премиальные легкие самолеты для частных владельцев и авиационных энтузиастов. Полный сервис: от выбора до обслуживания.',
-  buttonText = 'Смотреть каталог',
-  secondaryButtonText = 'Тест-драйв',
-  backgroundImage = 'https://images.pexels.com/photos/1552212/pexels-photo-1552212.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80'
+  title = "Свежие овощи прямо с грядки",
+  subtitle = "Доставляем экологически чистые овощи от местных фермеров. 100% натурально, без химии и пестицидов. Бесплатная доставка от 2000₽",
+  buttonText = "Заказать сейчас",
+  buttonColor = "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700",
+  backgroundImage = "https://images.pexels.com/photos/1300979/pexels-photo-1300979.jpeg?auto=compress&cs=tinysrgb&w=1920"
 }: HeroProps) {
   return (
-    <section 
-      id="hero"
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
-    >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img 
-          src={backgroundImage}
-          alt="Sky background"
-          className="w-full h-full object-cover"
-        />
-        {/* Multi-layer Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-sky-950/90 to-indigo-950/95" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-        {/* Animated Gradient Orbs */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Badge */}
-          <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-sm text-sky-100 font-medium">Новые модели 2024 года уже в каталоге</span>
+            <span className="inline-flex items-center gap-2 bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-green-500/30">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              Доставка сегодня
+            </span>
           </motion.div>
 
-          {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-sky-200 to-cyan-200">
-              {title}
-            </span>
-          </h1>
+          <motion.h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {title}
+          </motion.h1>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-sky-100/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <motion.p
+            className="text-lg text-gray-200 mb-8 leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             {subtitle}
-          </p>
+          </motion.p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.a
-              href="#catalog"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/30 transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          <motion.div
+            className="flex flex-wrap gap-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <motion.button
+              className={`flex items-center gap-2 ${buttonColor} text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg shadow-green-500/30 transition-all`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {buttonText}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+            <motion.button
+              className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg border border-white/20 hover:bg-white/20 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Play className="w-5 h-5" />
-              {secondaryButtonText}
-            </motion.a>
-          </div>
-        </motion.div>
+              Смотреть каталог
+            </motion.button>
+          </motion.div>
+        </div>
 
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+        <motion.div
+          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <ChevronDown className="w-8 h-8 text-white/50" />
+          {[
+            { icon: Truck, title: "Быстрая доставка", desc: "За 2 часа по городу" },
+            { icon: Shield, title: "Гарантия качества", desc: "100% свежесть" },
+            { icon: Clock, title: "Ежедневно", desc: "С 8:00 до 22:00" }
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-4 bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10"
+            >
+              <div className="bg-green-500/20 p-3 rounded-xl">
+                <item.icon className="w-6 h-6 text-green-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold">{item.title}</h3>
+                <p className="text-gray-300 text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

@@ -1,107 +1,99 @@
 
 import React from 'react';
-import { Plane, Menu, X, Phone } from 'lucide-react';
+import { Leaf, ShoppingCart, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   logo?: string;
-  phone?: string;
+  navItems?: string;
   ctaText?: string;
+  bgColor?: string;
 }
 
-export function Header({ logo = 'SkyWings', phone = '+7 (800) 555-35-35', ctaText = 'Связаться' }: HeaderProps) {
+export function Header({
+  logo = "ОвощнойРай",
+  navItems = "Главная,Каталог,О нас,Контакты",
+  ctaText = "Корзина",
+  bgColor = "bg-white"
+}: HeaderProps) {
   const [isOpen, setIsOpen] = React.useState(false);
-
-  const navItems = [
-    { label: 'Каталог', href: '#catalog' },
-    { label: 'Преимущества', href: '#features' },
-    { label: 'О компании', href: '#about' },
-    { label: 'Контакты', href: '#contact' },
-  ];
+  const items = navItems.split(',').map(item => item.trim());
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <header className={`${bgColor} shadow-sm sticky top-0 z-40`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-shadow">
-              <Plane className="w-6 h-6 text-white" />
+        <div className="flex justify-between items-center h-16">
+          <motion.div
+            className="flex items-center gap-2"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-2 rounded-xl">
+              <Leaf className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
               {logo}
             </span>
-          </a>
+          </motion.div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-gray-600 hover:text-blue-600 font-medium transition-colors relative group"
+            {items.map((item, index) => (
+              <motion.a
+                key={item}
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                className="text-gray-600 hover:text-green-600 transition-colors font-medium"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300" />
-              </a>
+                {item}
+              </motion.a>
             ))}
           </nav>
 
-          {/* CTA & Phone */}
-          <div className="hidden md:flex items-center gap-6">
-            <a href={`tel:${phone}`} className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors">
-              <Phone className="w-4 h-4" />
-              <span className="font-medium">{phone}</span>
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              {ctaText}
-            </a>
-          </div>
+          <motion.button
+            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ShoppingCart className="w-4 h-4" />
+            {ctaText}
+          </motion.button>
 
-          {/* Mobile Menu Button */}
           <button
+            className="md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100"
-          >
-            <div className="px-4 py-6 space-y-4">
-              {navItems.map((item) => (
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="md:hidden py-4 border-t"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              {items.map((item) => (
                 <a
-                  key={item.label}
-                  href={item.href}
+                  key={item}
+                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  className="block py-2 text-gray-600 hover:text-green-600"
                   onClick={() => setIsOpen(false)}
-                  className="block text-gray-700 hover:text-blue-600 font-medium py-2"
                 >
-                  {item.label}
+                  {item}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl"
-              >
+              <button className="mt-4 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-2.5 rounded-full font-semibold">
+                <ShoppingCart className="w-4 h-4" />
                 {ctaText}
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 }

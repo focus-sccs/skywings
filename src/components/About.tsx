@@ -1,113 +1,121 @@
 
 import React from 'react';
-import { CheckCircle, Play } from 'lucide-react';
+import { CheckCircle, Users, Truck, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface AboutProps {
   title?: string;
-  subtitle?: string;
   description?: string;
-  image?: string;
+  backgroundImage?: string;
 }
 
-const achievements = [
-  'Более 500 проданных самолетов',
-  '15 лет на рынке авиации',
-  'Сертифицированный дилер ведущих производителей',
-  'Собственный сервисный центр',
-  'Летная школа с 50+ инструкторами',
-];
-
 export function About({
-  title = 'О компании SkyWings',
-  subtitle = 'Ваш надежный партнер в мире авиации',
-  description = 'SkyWings — ведущий дилер легких самолетов в России и СНГ. Мы предлагаем полный спектр услуг: от консультаций по выбору самолета до технического обслуживания и обучения пилотов. Наша команда экспертов имеет более 15 лет опыта в авиационной индустрии.',
-  image = 'https://images.pexels.com/photos/1554732/pexels-photo-1554732.jpeg?auto=compress&cs=tinysrgb&w=800',
+  title = "О нашем магазине",
+  description = "ОвощнойРай — это семейный бизнес, который начался в 2015 году с маленькой лавки на рынке. Сегодня мы сотрудничаем с 50+ фермерскими хозяйствами и доставляем свежие овощи тысячам клиентов ежедневно. Наша миссия — сделать качественные продукты доступными для каждой семьи.",
+  backgroundImage = "https://images.pexels.com/photos/1300979/pexels-photo-1300979.jpeg?auto=compress&cs=tinysrgb&w=800"
 }: AboutProps) {
+  const stats = [
+    { icon: Users, value: "15 000+", label: "Довольных клиентов" },
+    { icon: Truck, value: "50+", label: "Фермерских хозяйств" },
+    { icon: Award, value: "8 лет", label: "На рынке" }
+  ];
+
+  const benefits = [
+    "Только свежие овощи каждый день",
+    "Прямые поставки от фермеров",
+    "Лабораторный контроль качества",
+    "Экологичные упаковки",
+    "Гибкая система скидок",
+    "Персональный менеджер для оптовиков"
+  ];
+
   return (
-    <section id="about" className="py-24 bg-gray-50">
+    <section id="о-нас" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={image}
-                alt="О компании SkyWings"
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
-              
-              {/* Play Button */}
-              <button className="absolute inset-0 flex items-center justify-center group">
-                <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-                  <Play className="w-8 h-8 text-blue-600 ml-1" />
-                </div>
-              </button>
-            </div>
-
-            {/* Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-xl p-6 hidden lg:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
-                  <span className="text-3xl font-bold text-blue-600">15+</span>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">Лет опыта</div>
-                  <div className="text-gray-500">на рынке</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+            <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
               О компании
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{title}</h2>
-            <p className="text-xl text-blue-600 font-medium mb-6">{subtitle}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">{title}</h2>
             <p className="text-gray-600 leading-relaxed mb-8">{description}</p>
 
-            {/* Achievements */}
-            <div className="space-y-4 mb-8">
-              {achievements.map((achievement, index) => (
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              {stats.map((stat, index) => (
                 <motion.div
-                  key={achievement}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  key={index}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-3"
                 >
-                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">{achievement}</span>
+                  <div className="inline-flex p-3 rounded-xl bg-green-100 mb-2">
+                    <stat.icon className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                  <div className="text-sm text-gray-500">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
 
-            {/* CTA */}
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+            <div className="grid grid-cols-2 gap-3">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-600 text-sm">{benefit}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={backgroundImage}
+                alt="Свежие овощи"
+                className="w-full h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-green-500 p-3 rounded-xl">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Сертифицированный партнёр</h4>
+                      <p className="text-sm text-gray-600">Лучшая фермерская продукция региона</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <motion.div
+              className="absolute -top-6 -right-6 bg-gradient-to-br from-green-500 to-emerald-600 text-white p-6 rounded-2xl shadow-xl"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              Связаться с нами
-            </a>
+              <div className="text-3xl font-bold">100%</div>
+              <div className="text-sm opacity-90">Натурально</div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
